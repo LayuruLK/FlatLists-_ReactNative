@@ -1,8 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
 import { Image, StyleSheet, View } from "react-native";
-import { Text } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
 export default function Profile({route}){
     const { student } = route.params;
+    const navigation = useNavigation();
     return(
         <View style={styles.profileContainer}>
             <View style={styles.imgContainer}>
@@ -14,6 +16,11 @@ export default function Profile({route}){
                 <Text style={styles.textEmail}>Email: {student.email}</Text>
                 <Text style={styles.textAddress}>Address: {student.address}</Text>
                 <Text style={styles.textPhone}>Phone: {student.phone}</Text>
+            </View>
+            <View style={styles.btnContainer}>
+                <Button style={styles.btn} onPress={()=>navigation.navigate("UpdateStudent", {student})}>
+                    Update
+                </Button>
             </View>
         </View>
     )

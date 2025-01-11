@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddStudent from './components/AddStudent';
+import UpdateStudent from './components/UpdateStudent';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -16,6 +17,7 @@ export default function App() {
           <Stack.Screen name="StudentList" component={StudentList} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="AddStudent" component={AddStudent} />
+          <Stack.Screen name="UpdateStudent" component={UpdateStudent} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

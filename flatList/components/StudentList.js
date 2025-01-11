@@ -55,40 +55,40 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        backgroundColor: '#f9f9f9', // Light background for better readability
+        backgroundColor: '#f9f9f9', 
     },
     item: {
         padding: 12,
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#333', // Darker text for better contrast
+        color: '#333', 
     },
     img: {
-        width: 80, // Fixed size for consistency
+        width: 80, 
         height: 80,
-        borderRadius: 40, // Circular images
-        marginVertical: 8, // Space around the image
-        alignSelf: 'center', // Center the image horizontally
+        borderRadius: 40, 
+        marginVertical: 8, 
+        alignSelf: 'center', 
     },
     listItemContainer: {
-        flexDirection: 'row', // Horizontal alignment of image and text
+        flexDirection: 'row', 
         alignItems: 'center',
         marginBottom: 16,
-        backgroundColor: '#fff', // Card-like effect
+        backgroundColor: '#fff', 
         borderRadius: 8,
         padding: 10,
-        shadowColor: '#000', // Subtle shadow for elevation
+        shadowColor: '#000', 
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 3,
         width: '100%',
-        justifyContent: 'space-between', // Space between content and button
+        justifyContent: 'space-between', 
     },
     deleteButton: {
         marginLeft: 10,
         paddingVertical: 5,
-        backgroundColor: '#ff6347', // Red background for delete button
+        backgroundColor: '#FF4B52', 
     },
     buttonContainer: {
         marginTop: 20,
