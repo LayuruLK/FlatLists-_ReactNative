@@ -1,24 +1,29 @@
 import { FlatList, Image, StyleSheet, Touchable, TouchableOpacity, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import { students } from './StudentsDb';
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 
 export default function StudentList() {
     const navigation = useNavigation();
+    const [myStudents, setMyStudents] = useState(students)
     return (
         <View style={styles.container}>
             <FlatList
-                data={students}
-                keyExtractor={item=>item.id}
+                data={myStudents}
+                keyExtractor={item => item.id}
                 renderItem={({ item }) =>
-                    <TouchableOpacity onPress={() => navigation.navigate("Profile", {student:item})}> 
+                    <TouchableOpacity onPress={() => navigation.navigate("Profile", { student: item })}>
                         <View style={styles.listItemContainer}>
-                            <Image source={item.profile_pic} style={styles.img}/>
+                            <Image source={item.profile_pic} style={styles.img} />
                             <Text style={styles.item}>{item.name}</Text>
                         </View>
                     </TouchableOpacity>
                 }
             />
+            <View style={styles.buttonContainer}>
+                <Button onPress={() => navigation.navigate("AddStudent")}>Add Here</Button>
+            </View>
         </View>
     )
 }
