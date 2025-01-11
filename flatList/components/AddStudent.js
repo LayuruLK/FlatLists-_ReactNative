@@ -15,7 +15,7 @@ export default function AddStudent() {
     return (
         <View style={styles.container}>
             <View style={styles.formContainer}>
-                <TextInput mode="outlined" label="Name" value={name} onChangeText={setName} />
+                <TextInput mode="outlined" label="Name" value={name} onChangeText={setName} style={styles.input}/>
             </View>
             <View style={styles.btnContainer}>
                 <Button onPress={() => {
@@ -28,5 +28,27 @@ export default function AddStudent() {
 }
 
 const styles = StyleSheet.create({
-
-})
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f9f9f9",
+        padding: 20,
+    },
+    formContainer: {
+        width: "100%",
+        marginBottom: 20,
+    },
+    input: {
+        backgroundColor: "#fff",
+    },
+    btnContainer: {
+        width: "100%",
+        alignItems: "center",
+    },
+    addButton: {
+        width: "50%",
+        paddingVertical: 10,
+        backgroundColor: "#007bff",
+    },
+});
