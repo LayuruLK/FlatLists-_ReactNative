@@ -2,16 +2,27 @@ import { FlatList, Image, StyleSheet, Touchable, TouchableOpacity, View } from '
 import { Button, Text } from 'react-native-paper';
 import { students } from './StudentsDb';
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export default function StudentList() {
+export default function StudentList({ route }) {
     const navigation = useNavigation();
     const [myStudents, setMyStudents] = useState(students)
+    const [rerender, setRerender] = useState(false)
+
+    React.useEffect(() => {
+        if (route.params?.newStudent) {
+          const { newStudent } = route.params;
+          setMyStudents((pre)=>[...pre,{...newStudent}]);
+          setRerender(!rerender);
+        }
+      }, [route.params?.newStudent]);
+
     return (
         <View style={styles.container}>
             <FlatList
                 data={myStudents}
                 keyExtractor={item => item.id}
+                extraData={rerender}
                 renderItem={({ item }) =>
                     <TouchableOpacity onPress={() => navigation.navigate("Profile", { student: item })}>
                         <View style={styles.listItemContainer}>
