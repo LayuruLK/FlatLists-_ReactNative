@@ -11,11 +11,16 @@ export default function StudentList({ route }) {
 
     React.useEffect(() => {
         if (route.params?.newStudent) {
-          const { newStudent } = route.params;
-          setMyStudents((pre)=>[...pre,{...newStudent}]);
-          setRerender(!rerender);
+            const { newStudent } = route.params;
+            setMyStudents((pre) => [...pre, { ...newStudent }]);
+            setRerender(!rerender);
         }
-      }, [route.params?.newStudent]);
+    }, [route.params?.newStudent]);
+
+    const handleDelete = (id) => {
+        // Filter out the student with the given id
+        setMyStudents((prevStudents) => prevStudents.filter(student => student.id !== id));
+    };
 
     return (
         <View style={styles.container}>
@@ -28,6 +33,13 @@ export default function StudentList({ route }) {
                         <View style={styles.listItemContainer}>
                             <Image source={item.profile_pic} style={styles.img} />
                             <Text style={styles.item}>{item.name}</Text>
+                            <Button
+                                mode="outlined"
+                                onPress={() => handleDelete(item.id)}
+                                style={styles.deleteButton}
+                            >
+                                Delete
+                            </Button>
                         </View>
                     </TouchableOpacity>
                 }
@@ -70,6 +82,16 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 3,
-        width: '100%'
+        width: '100%',
+        justifyContent: 'space-between', // Space between content and button
+    },
+    deleteButton: {
+        marginLeft: 10,
+        paddingVertical: 5,
+        backgroundColor: '#ff6347', // Red background for delete button
+    },
+    buttonContainer: {
+        marginTop: 20,
+        alignItems: 'center',
     },
 });
