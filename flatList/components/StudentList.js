@@ -1,4 +1,4 @@
-import { FlatList, Image, StyleSheet, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Touchable, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { students } from './StudentsDb';
 
@@ -8,11 +8,13 @@ export default function StudentList() {
             <FlatList
                 data={students}
                 keyExtractor={item=>item.id}
-                renderItem={({ item }) => 
-                    <View style={styles.listItemContainer}>
-                        <Image source={item.profile_pic} style={styles.img}/>
-                        <Text style={styles.item}>{item.name}</Text>
-                    </View>
+                renderItem={({ item }) =>
+                    <TouchableOpacity> 
+                        <View style={styles.listItemContainer}>
+                            <Image source={item.profile_pic} style={styles.img}/>
+                            <Text style={styles.item}>{item.name}</Text>
+                        </View>
+                    </TouchableOpacity>
                 }
             />
         </View>
